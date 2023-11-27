@@ -9,8 +9,8 @@ _ReSharper.*/
 *.resharper.user
 
 # Build results
-/bin/
-/obj/
+bin
+obj
 
 # NuGet packages
 /packages/
