@@ -1,3 +1,5 @@
+using YamlDotNet.Serialization;
+
 namespace DockerComposeGenerator;
 
 public class Service
@@ -10,11 +12,17 @@ public class Service
     public Dictionary<string, string> Environment { get; set; } = new Dictionary<string, string>();
     public List<string> Networks { get; set; } = new List<string>();
     public string Command { get; set; } = string.Empty;
-    public List<string> Depends_On { get; set; } = new List<string>();
+
+    [YamlMember(Alias = "depends_on")]
+    public List<string> DependsOn { get; set; } = new List<string>();
     public RestartPolicy Restart { get; set; } 
     public string ContainerName { get; set; } = string.Empty;
-    public string Hostname { get; set; } = string.Empty;
-    public HealthCheck Healthcheck { get; set; }  = new HealthCheck();  
+
+    [YamlMember(Alias = "hostname")]
+    public string HostName { get; set; } = string.Empty;
+
+    [YamlMember(Alias = "healthcheck")]
+    public HealthCheck HealthCheck { get; set; }  = new HealthCheck();  
     public Dictionary<string, string> Labels { get; set; } = new Dictionary<string, string>();
     
     // public List<string> Config { get; set; }
