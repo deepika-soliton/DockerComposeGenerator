@@ -1,8 +1,8 @@
 namespace DockerComposeGenerator;
 public enum RestartPolicy
 {
-    No,
-    Always,
-    OnFailure,
-    UnlessStopped
+    no,
+    always,
+    onfailure,
+    unlessstopped
 }

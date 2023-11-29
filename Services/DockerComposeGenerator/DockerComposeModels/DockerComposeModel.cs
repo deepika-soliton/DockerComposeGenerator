@@ -1,11 +1,20 @@
+using Newtonsoft.Json;
+
 namespace DockerComposeGenerator;
 
 public class DockerComposeModel
 {
-    public string Version {get; set;} = string.Empty;
-    public  Dictionary<string, Service> Services { get; set; } = new Dictionary<string, Service>();
-    public Dictionary<string, Networks> Networks { get; set; } = new Dictionary<string, Networks>();
-    public Dictionary<string, Volume> Volumes {get;set;} = new Dictionary<string, Volume>();
+    [JsonProperty("version")]
+    public string Version {get; set;}
+
+    [JsonProperty("services")]
+    public  Dictionary<string, Service> Services { get; set; } 
+
+    [JsonProperty("networks")]
+    public Dictionary<string, Networks> Networks { get; set; }
+
+    [JsonProperty("volumes")] 
+    public Dictionary<string, Volume> Volumes {get;set;} 
 
     //public Dictionary<string, SecretsAttribute> Secrets {get;set;}
     //public Dictionary<string, ConfigAttribute> Configs {get;set;}

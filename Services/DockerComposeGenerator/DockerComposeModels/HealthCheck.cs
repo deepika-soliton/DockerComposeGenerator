@@ -1,12 +1,27 @@
+using Newtonsoft.Json;
+
 namespace DockerComposeGenerator;
 
 public class HealthCheck
 {
-    public List<string> Test { get; set; } = new List<string>();
-    public string Interval { get; set; }  = string.Empty;
-    public string Timeout { get; set; }  = string.Empty;
+    [JsonProperty("test")]
+    public List<string> Test { get; set; } 
+
+    [JsonProperty("interval")]
+    public string Interval { get; set; } 
+    
+    [JsonProperty("timeout")]
+    public string Timeout { get; set; } 
+    
+    [JsonProperty("retries")]
     public int Retries { get; set; }
-    public string StartPeriod { get; set; }  = string.Empty;
-    public string StartInterval { get; set; }  = string.Empty;
+    
+    [JsonProperty("startperiod")]
+    public string StartPeriod { get; set; } 
+    
+    [JsonProperty("startinterval")]
+    public string StartInterval { get; set; } 
+    
+    [JsonProperty("disable")]
     public bool Disable {get;set;}
 }

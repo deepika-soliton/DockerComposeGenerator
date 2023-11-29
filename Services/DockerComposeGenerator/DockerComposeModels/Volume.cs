@@ -1,19 +1,35 @@
 using YamlDotNet.Serialization;
+using Newtonsoft.Json;
 
 namespace DockerComposeGenerator;
 
 public class Volume
 {   
-    public List<string> Volumes {get;set;} = new List<string>();
-    public string Driver { get; set; } = string.Empty;
-    public string Name { get; set; } = string.Empty;
+    [JsonProperty("volumes")]
+    public List<string> Volumes {get;set;} 
+
+    [JsonProperty("name")]
+    public string Name { get; set; } 
+
+    [JsonProperty("external")]
     public bool External { get; set; }
 
     [YamlMember(Alias = "driver_opts")]
-    public Dictionary<string, string> DriverOpts { get; set; } = new Dictionary<string, string>();
-    public string Bind { get; set; } = string.Empty;
-    public string Type { get; set; } = string.Empty;
+    [JsonProperty("driver_opts")]
+    public Dictionary<string, string> DriverOpts { get; set; }
+
+    [JsonProperty("bind")]
+    public string Bind { get; set; } 
+
+    [JsonProperty("type")]
+    public string Type { get; set; } 
+
+    [JsonProperty("nocopy")]
     public bool NoCopy { get; set; }
-    public string CGroup { get; set; } = string.Empty;
-    public Dictionary<string, string> Labels { get; set; } = new Dictionary<string, string>();
+
+    [JsonProperty("cgroup")]
+    public string CGroup { get; set; } 
+
+    [JsonProperty("labels")]
+    public Dictionary<string, string> Labels { get; set; } 
 }

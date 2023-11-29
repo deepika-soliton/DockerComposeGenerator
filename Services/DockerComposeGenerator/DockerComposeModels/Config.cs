@@ -1,11 +1,24 @@
+using Newtonsoft.Json;
+
 namespace DockerComposeGenerator;
 
 public class Config
-{
-    public string File { get; set; } = string.Empty;
+{   
+    [JsonProperty("file")]
+    public string File { get; set; }
+
+    [JsonProperty("external")]
     public bool External { get; set; }
-    public string Name { get; set; } = string.Empty;
-    public string Content { get; set; } = string.Empty;
-    public Dictionary<string, string> Labels { get; set; } = new Dictionary<string, string>();
-    public string Driver { get; set; } = string.Empty;
+
+    [JsonProperty("name")]
+    public string Name { get; set; }
+
+    [JsonProperty("content")]
+    public string Content { get; set; }
+
+    [JsonProperty("labels")]
+    public Dictionary<string, string> Labels { get; set; } 
+
+    [JsonProperty("driver")]
+    public string Driver { get; set; }
 }

@@ -1,31 +1,57 @@
 using YamlDotNet.Serialization;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 
 namespace DockerComposeGenerator;
 
 public class Service
 {   
-    public List<string> Profiles { get; set; } = new List<string>();
-    public string Image { get; set; } = string.Empty;
-    public Build Build { get; set; } = new Build();
+    [JsonProperty("profiles")]
+    public List<string> Profiles { get; set; } 
+    
+    [JsonProperty("image")]
+    public string Image { get; set; } 
+    
+    [JsonProperty("build")]
+    public Build Build { get; set; } 
 
     [YamlMember(Alias = "container_name")]
-    public string ContainerName { get; set; } = string.Empty;
-    public Dictionary<string, string> Environment { get; set; } = new Dictionary<string, string>();
-    public List<string> Ports { get; set; } = new List<string>();
-    public List<string> Volumes {get;set;} = new List<string>();
-    public List<string> Networks { get; set; } = new List<string>();
-    public string Command { get; set; } = string.Empty;
+    [JsonProperty("container_name")]
+    public string ContainerName { get; set; } 
+    
+    [JsonProperty("environment")]
+    public Dictionary<string, string> Environment { get; set; } 
+   
+    [JsonProperty("ports")]
+    public List<string> Ports { get; set; } 
+
+    [JsonProperty("volumes")]
+    public List<string> Volumes {get;set;} 
+
+    [JsonProperty("networks")]
+    public List<string> Networks { get; set; } 
+
+    [JsonProperty("command")]
+    public string Command { get; set; } 
 
     [YamlMember(Alias = "depends_on")]
-    public List<string> DependsOn { get; set; } = new List<string>();
+    [JsonProperty("depends_on")]
+    public List<string> DependsOn { get; set; } 
+
+    [JsonProperty("restart")]
+    [JsonConverter(typeof(StringEnumConverter))]
     public RestartPolicy Restart { get; set; } 
 
     [YamlMember(Alias = "hostname")]
-    public string HostName { get; set; } = string.Empty;
+    [JsonProperty("hostname")]
+    public string HostName { get; set; } 
 
     [YamlMember(Alias = "healthcheck")]
-    public HealthCheck HealthCheck { get; set; }  = new HealthCheck();  
-    public Dictionary<string, string> Labels { get; set; } = new Dictionary<string, string>();
+    [JsonProperty("healthcheck")]
+    public HealthCheck HealthCheck { get; set; } 
+
+    [JsonProperty("labels")]
+    public Dictionary<string, string> Labels { get; set; } 
     
     // public List<string> Config { get; set; }
     // public Volume Volumes { get; set; } = new Volume();   
